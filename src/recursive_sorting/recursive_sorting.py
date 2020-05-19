@@ -32,15 +32,13 @@ def merge_sort(arr):
         left = merge_sort(arr[:mid])
         right = merge_sort(arr[mid:])
         # merge sorted pieces
-        arr = merge(left, right)        
+        arr = merge(left, right)
     return arr
 
-def get_partial_list(origin_list, left_index, right_index): # Added
-    return origin_list[left_index:right_index+1]
 # implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
-    left = get_partial_list(arr,start,mid)
-    right = get_partial_list(arr,mid+1,end)
+    left = arr[start:mid+1] # +1 includes the right index
+    right = arr[mid+1: end+1] # +1 includes the right index
     i = 0
     j = 0
     k = start
